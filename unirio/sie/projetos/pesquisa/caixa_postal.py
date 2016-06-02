@@ -7,9 +7,9 @@ from datetime import date
 from unirio.sie.base import SIE
 from unirio.sie.documentos import SIEDocumentoDAO
 from unirio.sie.funcionarios import SIEFuncionarios
-from unirio.sie.projetos.projetos import SIEArquivosProj
-from unirio.sie.SIEProjetosPesquisa import SIEProjetosPesquisa, SIECandidatosBolsistasProjsPesquisa, \
-    SIEAvaliacaoProjsPesquisaDAO
+from unirio.sie.projetos import SIEArquivosProj
+from unirio.sie.projetos.pesquisa import SIEProjetosPesquisa, SIEAvaliacaoProjsPesquisaDAO
+from unirio.sie.projetos.pesquisa.bolsistas import SIECandidatosBolsistasProjsPesquisa
 from unirio.sie.utils import sie_str_to_date
 
 

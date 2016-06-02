@@ -31,9 +31,9 @@ class TestDocumento(SIETestCase):
 
     def test_criar_documento_params_vazios(self):
         with self.assertRaises(KeyError):
-            from unirio.sie.projetos import projetos
+            from unirio.sie.projetos import base
 
-            dao_projetos = projetos()
+            dao_projetos = base()
             documento = self.dao.criar_documento(self.funcionario_dummy, dict())
             # devo tentar apagar o documento?
 
