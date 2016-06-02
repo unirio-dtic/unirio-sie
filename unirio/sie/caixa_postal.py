@@ -3,10 +3,11 @@
 Módulo que cuida das caixas postais que aparecerão no sistema.
 """
 from datetime import date
+
 from unirio.sie.base import SIE
-from unirio.sie.SIEDocumento import SIEDocumentoDAO
-from unirio.sie.SIEFuncionarios import SIEFuncionarios
-from unirio.sie.SIEProjetos import SIEArquivosProj
+from unirio.sie.documentos import SIEDocumentoDAO
+from unirio.sie.funcionarios import SIEFuncionarios
+from unirio.sie.projetos.projetos import SIEArquivosProj
 from unirio.sie.SIEProjetosPesquisa import SIEProjetosPesquisa, SIECandidatosBolsistasProjsPesquisa, \
     SIEAvaliacaoProjsPesquisaDAO
 from unirio.sie.utils import sie_str_to_date

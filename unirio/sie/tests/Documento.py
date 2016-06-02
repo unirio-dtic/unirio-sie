@@ -1,4 +1,5 @@
 from datetime import date
+
 from unirio.sie.tests.base import SIETestCase
 
 __author__ = 'carlosfaruolo'
@@ -10,27 +11,29 @@ class TestDocumento(SIETestCase):
     def __init__(self, *args, **kwargs):
         super(TestDocumento, self).__init__(*args, **kwargs)
 
-        from unirio.sie.SIEDocumento import SIEDocumentoDAO
-        from unirio.sie.SIEFuncionarios import SIEFuncionarioID
+        from unirio.sie.documentos import SIEDocumentoDAO
+        from unirio.sie.funcionarios import SIEFuncionarioID
 
         self.documento_valido = self.api.get(SIEDocumentoDAO.path).first()
         self.funcionario_dummy = self.api.get(SIEFuncionarioID.path).first()
 
     def setUp(self):
-        from unirio.sie.SIEDocumento import SIEDocumentoDAO
+        from unirio.sie.documentos import SIEDocumentoDAO
         self.dao = SIEDocumentoDAO()
 
     def test_criar_documento_projeto_pesquisa(self):
-        from unirio.sie.SIEProjetosPesquisa import SIEProjetosPesquisa
-        dao_projetos = SIEProjetosPesquisa()
+        from unirio.sie.projetos import pesquisa
+
+        dao_projetos = pesquisa()
         documento = self.dao.criar_documento(self.funcionario_dummy, dao_projetos.documento_inicial_padrao(self.funcionario_dummy))
         self.assertIsInstance(documento, dict)
         self.dao.remover_documento(documento)  # clean poopie
 
     def test_criar_documento_params_vazios(self):
         with self.assertRaises(KeyError):
-            from unirio.sie.SIEProjetos import SIEProjetos
-            dao_projetos = SIEProjetos()
+            from unirio.sie.projetos import projetos
+
+            dao_projetos = projetos()
             documento = self.dao.criar_documento(self.funcionario_dummy, dict())
             # devo tentar apagar o documento?
 
@@ -43,8 +46,9 @@ class TestDocumento(SIETestCase):
             documento = self.dao.obter_documento(self.DUMMY_INVALID_ID)
 
     def test_remover_documento(self):
-        from unirio.sie.SIEProjetosPesquisa import SIEProjetosPesquisa
-        dao_projetos = SIEProjetosPesquisa()
+        from unirio.sie.projetos import pesquisa
+
+        dao_projetos = pesquisa()
         documento = self.dao.criar_documento(self.funcionario_dummy, dao_projetos.documento_inicial_padrao(self.funcionario_dummy))
         self.dao.remover_documento(documento)
         # test passed
@@ -90,7 +94,7 @@ class TestDocumento(SIETestCase):
 
         previous_value = self.__get_ultimo_numero_processo()
 
-        from unirio.sie.SIEDocumento import _NumeroProcessoTipoDocumentoDAO
+        from unirio.sie.documentos import _NumeroProcessoTipoDocumentoDAO
         handler = _NumeroProcessoTipoDocumentoDAO(self.documento_valido["ID_TIPO_DOC"], self.funcionario_dummy)
         handler.gerar_numero_processo()
 
@@ -102,7 +106,7 @@ class TestDocumento(SIETestCase):
             pass
 
     def test_reverter_ultimo_numero_processo(self):
-        from unirio.sie.SIEDocumento import _NumeroProcessoTipoDocumentoDAO
+        from unirio.sie.documentos import _NumeroProcessoTipoDocumentoDAO
         handler = _NumeroProcessoTipoDocumentoDAO(self.documento_valido["ID_TIPO_DOC"], self.funcionario_dummy)
         try:
             handler.gerar_numero_processo()

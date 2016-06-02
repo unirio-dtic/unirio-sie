@@ -7,10 +7,10 @@ from deprecate import deprecated
 
 from unirio.sie.base import SIE
 from unirio.sie.exceptions import SIEException
-from unirio.sie.SIEBolsistas import SIEBolsas, SIEBolsistas
-from unirio.sie.SIEDocumento import SIEDocumentoDAO, SIETiposDocumentosDAO, SIEAssuntosDAO
-from unirio.sie.SIEFuncionarios import SIEFuncionarios
-from unirio.sie.SIETabEstruturada import SIETabEstruturada
+from unirio.sie.bolsistas import SIEBolsas, SIEBolsistas
+from unirio.sie.documentos import SIEDocumentoDAO, SIETiposDocumentosDAO, SIEAssuntosDAO
+from unirio.sie.funcionarios import SIEFuncionarios
+from unirio.sie.tab_estruturada import SIETabEstruturada
 from unirio.sie.utils import remover_acentos_query
 from unirio.api.exceptions import NoContentException, APIException
 

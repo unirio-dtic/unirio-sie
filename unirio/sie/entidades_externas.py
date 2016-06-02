@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import date
 from unirio.sie import SIE
-from unirio.sie.SIETabEstruturada import SIETabEstruturada
+from unirio.sie.tab_estruturada import SIETabEstruturada
 
 
 class SIEEntidadesExternas(SIE):

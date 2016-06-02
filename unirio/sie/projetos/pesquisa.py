@@ -1,20 +1,21 @@
 # -*- coding: utf-8 -*-
-from unirio.sie.SIEFuncionarios import SIEFuncionarioID
+from unirio.sie.funcionarios import SIEFuncionarioID
 from unirio.api.exceptions import APIException, NoContentException
-from unirio.sie.SIETabEstruturada import SIETabEstruturada
-from unirio.sie.SIEProjetos import SIEProjetos, SIEParticipantesProjs, SIEArquivosProj, SIEOrgaosProjetos, SIEAvaliacaoProjDAO, SIEClassifProjetos
-from unirio.sie.SIEDocumento import SIEDocumentoDAO, SIETiposDocumentosDAO, SIEAssuntosDAO
-from unirio.sie.SIEParametros import SIEParametrosDAO
+from unirio.sie.tab_estruturada import SIETabEstruturada
+from unirio.sie.projetos.projetos import SIEParticipantesProjs, SIEArquivosProj, SIEOrgaosProjetos, SIEAvaliacaoProjDAO, SIEClassifProjetos
+from unirio.sie.projetos import projetos
+from unirio.sie.documentos import SIEDocumentoDAO, SIETiposDocumentosDAO, SIEAssuntosDAO
+from unirio.sie.parametros import SIEParametrosDAO
 from unirio.sie.utils import campos_sie_lower, remover_acentos_query, datas_colidem, sie_str_to_date
 from unirio.sie import SIE, SIEException
 # from gluon.storage import Storage
-from datetime import date, timedelta, time, datetime
+from datetime import date, timedelta, datetime
 # from unirio.custom_widgets.currency_widget import CurrencyWidget
 import collections
 from deprecate import deprecated
 
 
-class SIEProjetosPesquisa(SIEProjetos):
+class SIEProjetosPesquisa(projetos):
     """
     Classe que representa os projetos de pesquisa
     """
